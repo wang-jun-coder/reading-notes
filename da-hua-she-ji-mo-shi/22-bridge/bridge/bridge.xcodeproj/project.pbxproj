@@ -1,0 +1,329 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		DAA53DE121E5CE0400C6611F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA53DE021E5CE0400C6611F /* main.m */; };
+		DAA53DEC21E5CEF900C6611F /* HandsetGame.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA53DEB21E5CEF900C6611F /* HandsetGame.m */; };
+		DAA53DEF21E5CF3600C6611F /* HandsetAddressList.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA53DEE21E5CF3600C6611F /* HandsetAddressList.m */; };
+		DAA53DF221E5CFB000C6611F /* HandsetBrandN.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA53DF121E5CFB000C6611F /* HandsetBrandN.m */; };
+		DAA53DF521E5CFEC00C6611F /* HandsetBrandM.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA53DF421E5CFEC00C6611F /* HandsetBrandM.m */; };
+		DAA53DF821E5D24600C6611F /* HandsetBrandS.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA53DF721E5D24600C6611F /* HandsetBrandS.m */; };
+		DAA53DFB21E5D28900C6611F /* HandsetMp3.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA53DFA21E5D28900C6611F /* HandsetMp3.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		DAA53DDB21E5CE0400C6611F /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		DAA53DDD21E5CE0400C6611F /* bridge */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = bridge; sourceTree = BUILT_PRODUCTS_DIR; };
+		DAA53DE021E5CE0400C6611F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		DAA53DE821E5CE6400C6611F /* HandsetSoft.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HandsetSoft.h; sourceTree = "<group>"; };
+		DAA53DE921E5CE8600C6611F /* HandsetBrand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HandsetBrand.h; sourceTree = "<group>"; };
+		DAA53DEA21E5CEF900C6611F /* HandsetGame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HandsetGame.h; sourceTree = "<group>"; };
+		DAA53DEB21E5CEF900C6611F /* HandsetGame.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HandsetGame.m; sourceTree = "<group>"; };
+		DAA53DED21E5CF3600C6611F /* HandsetAddressList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HandsetAddressList.h; sourceTree = "<group>"; };
+		DAA53DEE21E5CF3600C6611F /* HandsetAddressList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HandsetAddressList.m; sourceTree = "<group>"; };
+		DAA53DF021E5CFB000C6611F /* HandsetBrandN.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HandsetBrandN.h; sourceTree = "<group>"; };
+		DAA53DF121E5CFB000C6611F /* HandsetBrandN.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HandsetBrandN.m; sourceTree = "<group>"; };
+		DAA53DF321E5CFEC00C6611F /* HandsetBrandM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HandsetBrandM.h; sourceTree = "<group>"; };
+		DAA53DF421E5CFEC00C6611F /* HandsetBrandM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HandsetBrandM.m; sourceTree = "<group>"; };
+		DAA53DF621E5D24600C6611F /* HandsetBrandS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HandsetBrandS.h; sourceTree = "<group>"; };
+		DAA53DF721E5D24600C6611F /* HandsetBrandS.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HandsetBrandS.m; sourceTree = "<group>"; };
+		DAA53DF921E5D28900C6611F /* HandsetMp3.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HandsetMp3.h; sourceTree = "<group>"; };
+		DAA53DFA21E5D28900C6611F /* HandsetMp3.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HandsetMp3.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DAA53DDA21E5CE0400C6611F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		DAA53DD421E5CE0400C6611F = {
+			isa = PBXGroup;
+			children = (
+				DAA53DDF21E5CE0400C6611F /* bridge */,
+				DAA53DDE21E5CE0400C6611F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		DAA53DDE21E5CE0400C6611F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DAA53DDD21E5CE0400C6611F /* bridge */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DAA53DDF21E5CE0400C6611F /* bridge */ = {
+			isa = PBXGroup;
+			children = (
+				DAA53DE721E5CE4B00C6611F /* bridge */,
+				DAA53DE021E5CE0400C6611F /* main.m */,
+			);
+			path = bridge;
+			sourceTree = "<group>";
+		};
+		DAA53DE721E5CE4B00C6611F /* bridge */ = {
+			isa = PBXGroup;
+			children = (
+				DAA53DE821E5CE6400C6611F /* HandsetSoft.h */,
+				DAA53DE921E5CE8600C6611F /* HandsetBrand.h */,
+				DAA53DEA21E5CEF900C6611F /* HandsetGame.h */,
+				DAA53DEB21E5CEF900C6611F /* HandsetGame.m */,
+				DAA53DED21E5CF3600C6611F /* HandsetAddressList.h */,
+				DAA53DEE21E5CF3600C6611F /* HandsetAddressList.m */,
+				DAA53DF921E5D28900C6611F /* HandsetMp3.h */,
+				DAA53DFA21E5D28900C6611F /* HandsetMp3.m */,
+				DAA53DF021E5CFB000C6611F /* HandsetBrandN.h */,
+				DAA53DF121E5CFB000C6611F /* HandsetBrandN.m */,
+				DAA53DF321E5CFEC00C6611F /* HandsetBrandM.h */,
+				DAA53DF421E5CFEC00C6611F /* HandsetBrandM.m */,
+				DAA53DF621E5D24600C6611F /* HandsetBrandS.h */,
+				DAA53DF721E5D24600C6611F /* HandsetBrandS.m */,
+			);
+			path = bridge;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DAA53DDC21E5CE0400C6611F /* bridge */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DAA53DE421E5CE0400C6611F /* Build configuration list for PBXNativeTarget "bridge" */;
+			buildPhases = (
+				DAA53DD921E5CE0400C6611F /* Sources */,
+				DAA53DDA21E5CE0400C6611F /* Frameworks */,
+				DAA53DDB21E5CE0400C6611F /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = bridge;
+			productName = bridge;
+			productReference = DAA53DDD21E5CE0400C6611F /* bridge */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DAA53DD521E5CE0400C6611F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1010;
+				ORGANIZATIONNAME = "王俊";
+				TargetAttributes = {
+					DAA53DDC21E5CE0400C6611F = {
+						CreatedOnToolsVersion = 10.1;
+					};
+				};
+			};
+			buildConfigurationList = DAA53DD821E5CE0400C6611F /* Build configuration list for PBXProject "bridge" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = DAA53DD421E5CE0400C6611F;
+			productRefGroup = DAA53DDE21E5CE0400C6611F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DAA53DDC21E5CE0400C6611F /* bridge */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DAA53DD921E5CE0400C6611F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAA53DE121E5CE0400C6611F /* main.m in Sources */,
+				DAA53DF821E5D24600C6611F /* HandsetBrandS.m in Sources */,
+				DAA53DEF21E5CF3600C6611F /* HandsetAddressList.m in Sources */,
+				DAA53DF221E5CFB000C6611F /* HandsetBrandN.m in Sources */,
+				DAA53DF521E5CFEC00C6611F /* HandsetBrandM.m in Sources */,
+				DAA53DEC21E5CEF900C6611F /* HandsetGame.m in Sources */,
+				DAA53DFB21E5D28900C6611F /* HandsetMp3.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		DAA53DE221E5CE0400C6611F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		DAA53DE321E5CE0400C6611F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		DAA53DE521E5CE0400C6611F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7465LVKW35;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		DAA53DE621E5CE0400C6611F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7465LVKW35;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DAA53DD821E5CE0400C6611F /* Build configuration list for PBXProject "bridge" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DAA53DE221E5CE0400C6611F /* Debug */,
+				DAA53DE321E5CE0400C6611F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DAA53DE421E5CE0400C6611F /* Build configuration list for PBXNativeTarget "bridge" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DAA53DE521E5CE0400C6611F /* Debug */,
+				DAA53DE621E5CE0400C6611F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = DAA53DD521E5CE0400C6611F /* Project object */;
+}
