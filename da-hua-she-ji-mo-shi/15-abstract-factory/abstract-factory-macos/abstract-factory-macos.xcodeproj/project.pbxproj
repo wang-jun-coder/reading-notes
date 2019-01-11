@@ -189,10 +189,10 @@
 		DA76DB1821CA8C6F00D4CD12 /* object */ = {
 			isa = PBXGroup;
 			children = (
-				DA76DB1921CA8C6F00D4CD12 /* Department.m */,
-				DA76DB1A21CA8C6F00D4CD12 /* User.m */,
 				DA76DB1B21CA8C6F00D4CD12 /* Department.h */,
+				DA76DB1921CA8C6F00D4CD12 /* Department.m */,
 				DA76DB1C21CA8C6F00D4CD12 /* User.h */,
+				DA76DB1A21CA8C6F00D4CD12 /* User.m */,
 			);
 			path = object;
 			sourceTree = "<group>";
@@ -200,11 +200,11 @@
 		DA76DB1D21CA8C6F00D4CD12 /* factory */ = {
 			isa = PBXGroup;
 			children = (
-				DA76DB1E21CA8C6F00D4CD12 /* AccessFactory.m */,
-				DA76DB1F21CA8C6F00D4CD12 /* SqlServerFactory.h */,
-				DA76DB2021CA8C6F00D4CD12 /* AccessFactory.h */,
 				DA76DB2121CA8C6F00D4CD12 /* IFactory.h */,
+				DA76DB1F21CA8C6F00D4CD12 /* SqlServerFactory.h */,
 				DA76DB2221CA8C6F00D4CD12 /* SqlServerFactory.m */,
+				DA76DB2021CA8C6F00D4CD12 /* AccessFactory.h */,
+				DA76DB1E21CA8C6F00D4CD12 /* AccessFactory.m */,
 			);
 			path = factory;
 			sourceTree = "<group>";
@@ -212,16 +212,16 @@
 		DA76DB2321CA8C6F00D4CD12 /* sql */ = {
 			isa = PBXGroup;
 			children = (
-				DA76DB2421CA8C6F00D4CD12 /* AccessUser.h */,
-				DA76DB2521CA8C6F00D4CD12 /* IDepartment.h */,
-				DA76DB2621CA8C6F00D4CD12 /* SqlServerUser.h */,
-				DA76DB2721CA8C6F00D4CD12 /* AccessDepartment.m */,
-				DA76DB2821CA8C6F00D4CD12 /* SqlServerDepartment.h */,
-				DA76DB2921CA8C6F00D4CD12 /* AccessUser.m */,
-				DA76DB2A21CA8C6F00D4CD12 /* SqlServerUser.m */,
 				DA76DB2B21CA8C6F00D4CD12 /* IUser.h */,
+				DA76DB2421CA8C6F00D4CD12 /* AccessUser.h */,
+				DA76DB2921CA8C6F00D4CD12 /* AccessUser.m */,
+				DA76DB2621CA8C6F00D4CD12 /* SqlServerUser.h */,
+				DA76DB2A21CA8C6F00D4CD12 /* SqlServerUser.m */,
+				DA76DB2521CA8C6F00D4CD12 /* IDepartment.h */,
+				DA76DB2821CA8C6F00D4CD12 /* SqlServerDepartment.h */,
 				DA76DB2C21CA8C6F00D4CD12 /* SqlServerDepartment.m */,
 				DA76DB2D21CA8C6F00D4CD12 /* AccessDepartment.h */,
+				DA76DB2721CA8C6F00D4CD12 /* AccessDepartment.m */,
 			);
 			path = sql;
 			sourceTree = "<group>";
