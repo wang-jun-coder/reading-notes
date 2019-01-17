@@ -62,7 +62,7 @@ typedef int  Status;            // Status 是函数的类型,其值是函数结�
  @param e 对应元素返回
  @return 操作结果 OK/ERROR
  */
-Status GetElem(SqList L, int i, ElemType *e) {
+Status GetSqListElem(SqList L, int i, ElemType *e) {
     if (L.length==0 || i<1 || i>L.length) return ERROR;
     *e = L.data[i-1];
     return OK;
@@ -80,7 +80,7 @@ Status GetElem(SqList L, int i, ElemType *e) {
  @param e 要插入的元素
  @return 操作结果 OK/ERROR
  */
-Status ListInsert(SqList *L, int i, ElemType e) {
+Status SqListInsert(SqList *L, int i, ElemType e) {
     
     // 顺序线性表已满
     if (L->length == MAXSIZE) return ERROR;
@@ -111,7 +111,7 @@ Status ListInsert(SqList *L, int i, ElemType e) {
  @param e 被删除的元素返回
  @return 操作结果 OK/ERROR
  */
-Status ListDelete(SqList *L, int i, ElemType *e) {
+Status SqListDelete(SqList *L, int i, ElemType *e) {
     
     // 空表
     if (L->length==0) return ERROR;
@@ -129,13 +129,212 @@ Status ListDelete(SqList *L, int i, ElemType *e) {
     return OK;
 }
 ```
+## 线性表的链式存储结构
 
+### 线性表链式存储结构的定义
+为了表示每个数据元素 a<sub>i</sub> 与其直接后继元素 a<sub>i+1</sub> 之间的逻辑关系，对数据元素 a<sub>i</sub> 来说，出了存储其本身的信息之外，还需存储一个指示其直接后继的信息（即直接后继的存储位置）。把存储数据元素信息的域称为数据域，把存储直接后继位置的域称为指针域。指针域中存储的信息乘坐指针或链。这两部分信息组成数据元素 a<sub>i</sub> 的存储映像，称为结点（Node）。  
 
+n 个节点（a<sub>i</sub>的存储映像）链接成一个链表，即为线性表 (a<sub>1</sub>, a<sub>2</sub>, ..., a<sub>n</sub>) 的连式存储结构，因为此链表的每个节点中只包含一个指针域，所以叫做**单链表**。
 
+链表中第一个节点的存储位置叫做**头指针**
 
+有时，为了更加方便的对链表进行操作，会在单链表的第一个结点前附设一个结点，称为**头结点**
 
+### 头指针和头结点的异同
 
+![head_pointer_vs_head_node.png](assets/head_pointer_vs_head_node.png)
 
+### 线性表链式存储结构代码描述
+
+```c
+/**
+ 线性表的单链表的存储结构
+ 
+ 结点由存放数据元素的数据域和存放后继结点地址的指针域组成
+ */
+typedef struct Node {
+    ElemType data;
+    struct Node *next;
+} Node;
+
+// 定义 LinkList
+typedef struct Node *LinkList;
+```
+
+## 单链表的读取
+```c
+/**
+ 获取单链表第i 个位置的元素
+ 
+ @param L 单链表, 必须存在
+ @param i 要获取元素的位置标号 1 ≤ i ≤ ListLength(L)
+ @param e 返回元素
+ @return 操作是否成功 OK/ERROR
+ */
+Status GetLinkListElem(LinkList L, int i, ElemType *e) {
+    
+    LinkList p = L->next;
+    int j = 1;
+    
+    while (p && j<i) {
+        p = p->next;
+        ++j;
+    }
+    if (!p || j > i) {
+        return ERROR;
+    }
+    *e = p->data;
+    return OK;
+}
+```
+
+## 单链表的插入与删除
+### 单链表的插入
+
+```c
+/**
+ 向单链表第 i 个位置插入元素
+ 
+ @param L 单链表, 必须存在
+ @param i 要插入的位置标号, 1 ≤ i ≤ ListLength(L)
+ @param e 要插入的元素
+ @return 操作结果 OK/ERROR
+ */
+Status LinkListInsert(LinkList *L, int i, ElemType e) {
+    
+    LinkList p = *L;
+    int j = 1;
+    
+    while (p && j<i) {
+        p = p->next;
+        ++j;
+    }
+    // 第 i 个元素不存在
+    if (!p || j >i) return ERROR;
+    
+    // 生成一个新节点
+    LinkList s = (LinkList)malloc(sizeof(Node));
+    
+    // 插入元素
+    s->data = e;
+    s->next = p->next;
+    p->next = s;
+    return OK;
+}
+```
+
+### 单链表的删除
+
+```c
+/**
+ 移除单链表的第 i 个位置的元素
+ 
+ @param L 单链表,必须存在
+ @param i 要移除元素的位置标号, 1 ≤ i ≤ ListLength(L)
+ @param e 要删除的元素返回
+ @return 操作结果 OK/ERROR
+ */
+Status LinkListDelete(LinkList *L, int i, ElemType *e) {
+    
+    LinkList p = *L;
+    int j = 1;
+    while (p && j < i) {
+        p = p->next;
+        ++j;
+    }
+    // 第 i 个节点不存在
+    if (!p->next || j > i) return ERROR;
+    
+    LinkList q = p->next;
+    p->next = q->next;
+    *e = q->data;
+    free(q);
+    
+    return OK;
+}
+```
+
+## 单链表的整表创建
+**头插法**
+
+```c
+/**
+ 随机产生 n 个元素的值, 建立带表头节点的单链线性表 L(头插法)
+ 
+ @param L 创建的线性表 L 返回
+ @param n 表元素个数
+ @return 操作结果 OK/ERROR
+ */
+Status CreateLinkListHead(LinkList *L, int n) {
+    
+    srand((unsigned int)time(0));
+    *L = (LinkList)malloc(sizeof(Node));
+    (*L) -> next = NULL;
+    for (int i=0; i<n; i++) {
+        LinkList p = (LinkList)malloc(sizeof(Node));
+        p->data = rand() % 100 + 1;
+        p->next = (*L)->next;
+        (*L)->next = p;
+    }
+    return OK;
+}
+```
+
+**尾插法**
+
+```c
+/**
+ 随机产生 n 个元素的值, 建立带表头节点的单链线性表 L(尾插法)
+ 
+ @param L 创建的线性表 L 返回
+ @param n 表元素个数
+ @return 操作结果 OK/ERROR
+ */
+Status CreateLinkListTail(LinkList *L, int n) {
+    
+    srand((unsigned int)time(0));
+    (*L) = (LinkList)malloc(sizeof(Node));
+    LinkList r = *L;
+    
+    for (int i=0; i<n; i++) {
+        LinkList p = (Node *)malloc(sizeof(Node));
+        p->data = rand()%100+1;
+        r->next = p;
+        r = p;
+    }
+    r->next = NULL;
+    return OK;
+}
+
+```
+
+## 单链表的整表删除
+
+```c
+/**
+ 清空单链表
+ 
+ @param L 单链表, 必须存在
+ @return 操作结果 OK/ERROR
+ */
+Status ClearLinkList(LinkList *L) {
+    
+    LinkList p = (*L)->next;
+    while (p) {
+        LinkList q = p->next;
+        
+        free(p);
+        p=q;
+    }
+    (*L)->next = NULL;
+    return OK;
+}
+```
+
+## 单链表结构与顺序存储结构优缺点
+![](assets/sqlist_vs_linklist.png)
+
+<!--## 静态链表-->
 
 
 

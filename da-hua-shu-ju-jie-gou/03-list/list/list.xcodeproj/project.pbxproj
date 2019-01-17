@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		DA48D10821EE11D6006A240B /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = DA48D10721EE11D6006A240B /* main.c */; };
 		DA48D11021EE193A006A240B /* SqList.c in Sources */ = {isa = PBXBuildFile; fileRef = DA48D10F21EE193A006A240B /* SqList.c */; };
+		DA67B4AF21EF7AFA002D3947 /* LinkList.c in Sources */ = {isa = PBXBuildFile; fileRef = DA67B4AE21EF7AFA002D3947 /* LinkList.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,6 +29,9 @@
 		DA48D10721EE11D6006A240B /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		DA48D10E21EE193A006A240B /* SqList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SqList.h; sourceTree = "<group>"; };
 		DA48D10F21EE193A006A240B /* SqList.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SqList.c; sourceTree = "<group>"; };
+		DA67B4AB21EF75A4002D3947 /* List.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = List.h; sourceTree = "<group>"; };
+		DA67B4AD21EF7AFA002D3947 /* LinkList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LinkList.h; sourceTree = "<group>"; };
+		DA67B4AE21EF7AFA002D3947 /* LinkList.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = LinkList.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,7 +64,9 @@
 		DA48D10621EE11D6006A240B /* list */ = {
 			isa = PBXGroup;
 			children = (
+				DA67B4AB21EF75A4002D3947 /* List.h */,
 				DA48D11121EE1956006A240B /* sqList */,
+				DA67B4AC21EF7AEE002D3947 /* linkList */,
 				DA48D10721EE11D6006A240B /* main.c */,
 			);
 			path = list;
@@ -73,6 +79,15 @@
 				DA48D10F21EE193A006A240B /* SqList.c */,
 			);
 			path = sqList;
+			sourceTree = "<group>";
+		};
+		DA67B4AC21EF7AEE002D3947 /* linkList */ = {
+			isa = PBXGroup;
+			children = (
+				DA67B4AD21EF7AFA002D3947 /* LinkList.h */,
+				DA67B4AE21EF7AFA002D3947 /* LinkList.c */,
+			);
+			path = linkList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -132,6 +147,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA48D10821EE11D6006A240B /* main.c in Sources */,
+				DA67B4AF21EF7AFA002D3947 /* LinkList.c in Sources */,
 				DA48D11021EE193A006A240B /* SqList.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

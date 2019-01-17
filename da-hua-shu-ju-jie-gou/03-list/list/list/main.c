@@ -8,12 +8,15 @@
 
 #include <stdio.h>
 #include "./sqList/SqList.h"
+#include "./linkList/LinkList.h"
 
 int main(int argc, const char * argv[]) {
     // insert code here...
 //    printf("Hello, World!\n");
     
-    SqListTest();
+//    SqListTest();
+    
+    linkListTest();
     
     return 0;
 }

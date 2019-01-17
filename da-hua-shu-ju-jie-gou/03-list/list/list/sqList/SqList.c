@@ -15,30 +15,36 @@
  SqList 相关的测试函数入口
  */
 void SqListTest(void) {
+    
+    printf("======================================\n");
+    printf("============= SqListTest =============\n");
+    
     SqList L;
-    InitList(&L);
+    InitSqList(&L);
     
     printf("InitList: %p -- %d\n", L.data, L.length);
-    printf("ListIsEmpty: %d\n", ListIsEmpty(L));
+    printf("ListIsEmpty: %d\n", SqListIsEmpty(L));
     
     for (int i=0; i<=5; i++) {
         ElemType e = rand();
-        printf("ListInsert: i: %d elem: %d result: %d\n", i, e, ListInsert(&L, i, e));
+        printf("ListInsert: i: %d elem: %d result: %d\n", i, e, SqListInsert(&L, i, e));
     }
-    printf("ListIsEmpty: %d\n", ListIsEmpty(L));
+    printf("ListIsEmpty: %d\n", SqListIsEmpty(L));
     
     ElemType e = -1;
-    printf("LocateElem %d: %d\n", e, LocateElem(L, e));
+    printf("LocateElem %d: %d\n", e, LocateSqListElem(L, e));
     
-    int checkIndex = 1+(rand()%ListLength(L));
-    GetElem(L, checkIndex, &e);
+    int checkIndex = 1+(rand()%SqListLength(L));
+    GetSqListElem(L, checkIndex, &e);
     printf("GetElem %d: %d\n", checkIndex, e);
     
-    printf("LocateElem %d: %d\n",e, LocateElem(L, e));
-    printf("ListLength: %d\n", ListLength(L));
+    printf("LocateElem %d: %d\n",e, LocateSqListElem(L, e));
+    printf("ListLength: %d\n", SqListLength(L));
     
-    printf("ClearList: %d\n", ClearList(&L));
-    printf("ListIsEmpty: %d\n", ListIsEmpty(L));
+    printf("ClearList: %d\n", ClearSqList(&L));
+    printf("ListIsEmpty: %d\n", SqListIsEmpty(L));
+    
+    printf("======================================\n");
 }
 
 #pragma mark - SqList functions
@@ -50,7 +56,7 @@ void SqListTest(void) {
  @param e 对应元素返回
  @return 操作结果 OK/ERROR
  */
-Status GetElem(SqList L, int i, ElemType *e) {
+Status GetSqListElem(SqList L, int i, ElemType *e) {
     if (L.length==0 || i<1 || i>L.length) return ERROR;
     *e = L.data[i-1];
     return OK;
@@ -64,7 +70,7 @@ Status GetElem(SqList L, int i, ElemType *e) {
  @param e 要插入的元素
  @return 操作结果 OK/ERROR
  */
-Status ListInsert(SqList *L, int i, ElemType e) {
+Status SqListInsert(SqList *L, int i, ElemType e) {
     
     // 顺序线性表已满
     if (L->length == MAXSIZE) return ERROR;
@@ -92,7 +98,7 @@ Status ListInsert(SqList *L, int i, ElemType e) {
  @param e 被删除的元素返回
  @return 操作结果 OK/ERROR
  */
-Status ListDelete(SqList *L, int i, ElemType *e) {
+Status SqListDelete(SqList *L, int i, ElemType *e) {
     
     // 空表
     if (L->length==0) return ERROR;
@@ -116,7 +122,7 @@ Status ListDelete(SqList *L, int i, ElemType *e) {
  @param L 初始化线性表的返回
  @return 操作结果 OK/ERROR
  */
-Status InitList(SqList *L) {
+Status InitSqList(SqList *L) {
     SqList list;
     memset(list.data, 0, MAXSIZE*sizeof(ElemType));
     list.length = 0;
@@ -130,7 +136,7 @@ Status InitList(SqList *L) {
  @param L 要判断的线性表,必须存在
  @return TRUE/FALSE
  */
-Status ListIsEmpty(SqList L) {
+Status SqListIsEmpty(SqList L) {
     return L.length == 0 ? TRUE : FALSE;
 }
 
@@ -141,7 +147,7 @@ Status ListIsEmpty(SqList L) {
  @param e 要查找的元素
  @return 查找结果, 该元素在线性表中的位置编号, 0 表示不存在
  */
-int LocateElem(SqList L, ElemType e) {
+int LocateSqListElem(SqList L, ElemType e) {
     
     // 空表
     if (L.length==0) return ERROR;
@@ -163,7 +169,7 @@ int LocateElem(SqList L, ElemType e) {
  @param L 线性表, 必须存在
  @return 线性表长度
  */
-int ListLength(SqList L) {
+int SqListLength(SqList L) {
     return L.length;
 }
 
@@ -173,7 +179,7 @@ int ListLength(SqList L) {
  @param L 要清空的线性表, 必须存在
  @return 操作结果 OK/ERROR
  */
-Status ClearList(SqList *L) {
+Status ClearSqList(SqList *L) {
     memset(L->data, 0, MAXSIZE*sizeof(ElemType));
     L->length = 0;
     return OK;
