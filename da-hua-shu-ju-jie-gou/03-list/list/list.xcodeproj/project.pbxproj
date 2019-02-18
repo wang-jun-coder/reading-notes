@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA05411C221AD6DC004519F5 /* StaticList.c in Sources */ = {isa = PBXBuildFile; fileRef = DA05411B221AD6DC004519F5 /* StaticList.c */; };
 		DA48D10821EE11D6006A240B /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = DA48D10721EE11D6006A240B /* main.c */; };
 		DA48D11021EE193A006A240B /* SqList.c in Sources */ = {isa = PBXBuildFile; fileRef = DA48D10F21EE193A006A240B /* SqList.c */; };
 		DA67B4AF21EF7AFA002D3947 /* LinkList.c in Sources */ = {isa = PBXBuildFile; fileRef = DA67B4AE21EF7AFA002D3947 /* LinkList.c */; };
@@ -25,6 +26,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		DA05411A221AD6DC004519F5 /* StaticList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StaticList.h; sourceTree = "<group>"; };
+		DA05411B221AD6DC004519F5 /* StaticList.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = StaticList.c; sourceTree = "<group>"; };
 		DA48D10421EE11D6006A240B /* list */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = list; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA48D10721EE11D6006A240B /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		DA48D10E21EE193A006A240B /* SqList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SqList.h; sourceTree = "<group>"; };
@@ -45,6 +48,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DA054119221AD6BC004519F5 /* staticList */ = {
+			isa = PBXGroup;
+			children = (
+				DA05411A221AD6DC004519F5 /* StaticList.h */,
+				DA05411B221AD6DC004519F5 /* StaticList.c */,
+			);
+			path = staticList;
+			sourceTree = "<group>";
+		};
 		DA48D0FB21EE11D6006A240B = {
 			isa = PBXGroup;
 			children = (
@@ -67,6 +79,7 @@
 				DA67B4AB21EF75A4002D3947 /* List.h */,
 				DA48D11121EE1956006A240B /* sqList */,
 				DA67B4AC21EF7AEE002D3947 /* linkList */,
+				DA054119221AD6BC004519F5 /* staticList */,
 				DA48D10721EE11D6006A240B /* main.c */,
 			);
 			path = list;
@@ -147,6 +160,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA48D10821EE11D6006A240B /* main.c in Sources */,
+				DA05411C221AD6DC004519F5 /* StaticList.c in Sources */,
 				DA67B4AF21EF7AFA002D3947 /* LinkList.c in Sources */,
 				DA48D11021EE193A006A240B /* SqList.c in Sources */,
 			);

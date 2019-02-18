@@ -9,6 +9,7 @@
 #include <stdio.h>
 #include "./sqList/SqList.h"
 #include "./linkList/LinkList.h"
+#include "./staticList/StaticList.h"
 
 int main(int argc, const char * argv[]) {
     // insert code here...
@@ -16,7 +17,9 @@ int main(int argc, const char * argv[]) {
     
 //    SqListTest();
     
-    linkListTest();
+//    linkListTest();
+    
+    StaticLinkListTest();
     
     return 0;
 }
