@@ -11,6 +11,7 @@
 		DA48D10821EE11D6006A240B /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = DA48D10721EE11D6006A240B /* main.c */; };
 		DA48D11021EE193A006A240B /* SqList.c in Sources */ = {isa = PBXBuildFile; fileRef = DA48D10F21EE193A006A240B /* SqList.c */; };
 		DA67B4AF21EF7AFA002D3947 /* LinkList.c in Sources */ = {isa = PBXBuildFile; fileRef = DA67B4AE21EF7AFA002D3947 /* LinkList.c */; };
+		DA8512712220DE23007A250C /* CircularList.c in Sources */ = {isa = PBXBuildFile; fileRef = DA8512702220DE23007A250C /* CircularList.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -35,6 +36,8 @@
 		DA67B4AB21EF75A4002D3947 /* List.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = List.h; sourceTree = "<group>"; };
 		DA67B4AD21EF7AFA002D3947 /* LinkList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LinkList.h; sourceTree = "<group>"; };
 		DA67B4AE21EF7AFA002D3947 /* LinkList.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = LinkList.c; sourceTree = "<group>"; };
+		DA85126F2220DE23007A250C /* CircularList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CircularList.h; sourceTree = "<group>"; };
+		DA8512702220DE23007A250C /* CircularList.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CircularList.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +83,7 @@
 				DA48D11121EE1956006A240B /* sqList */,
 				DA67B4AC21EF7AEE002D3947 /* linkList */,
 				DA054119221AD6BC004519F5 /* staticList */,
+				DA85126E2220DE08007A250C /* cicularList */,
 				DA48D10721EE11D6006A240B /* main.c */,
 			);
 			path = list;
@@ -101,6 +105,15 @@
 				DA67B4AE21EF7AFA002D3947 /* LinkList.c */,
 			);
 			path = linkList;
+			sourceTree = "<group>";
+		};
+		DA85126E2220DE08007A250C /* cicularList */ = {
+			isa = PBXGroup;
+			children = (
+				DA85126F2220DE23007A250C /* CircularList.h */,
+				DA8512702220DE23007A250C /* CircularList.c */,
+			);
+			path = cicularList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -160,6 +173,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA48D10821EE11D6006A240B /* main.c in Sources */,
+				DA8512712220DE23007A250C /* CircularList.c in Sources */,
 				DA05411C221AD6DC004519F5 /* StaticList.c in Sources */,
 				DA67B4AF21EF7AFA002D3947 /* LinkList.c in Sources */,
 				DA48D11021EE193A006A240B /* SqList.c in Sources */,

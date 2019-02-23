@@ -475,7 +475,39 @@ int StaticLinkListLength(StaticLinkList space) {
 
 
 
+## 循环链表
+**将单链表中终端节点的指针端由空指针改为指向头结点， 就使整个单链表形成一个环， 这种头尾相接的单链表称为循环连链表（circular linked list）**
 
+### 循环链表的合并
+```c
+/**
+ 合并两个单循环链表
+ 
+ @param list 主单循环链表
+ @param anotherList 从单循环链表
+ @return 操作是否成功
+ */
+Status UnionCircularLinkList(CircularLinkList *list, CircularLinkList *anotherList) {
+    
+    CircularLinkList rearA = (*list);
+    CircularLinkList rearB = (*anotherList);
+    
+    while (rearA->next != *list) {
+        rearA = rearA->next;
+    }
+    while (rearB->next != *anotherList) {
+        rearB = rearB->next;
+    }
+    
+    rearA->next = (*anotherList)->next;
+    rearB->next = (*list);
+
+    free((*anotherList));
+    *anotherList = NULL;
+
+    return OK;
+}
+```
 
 
 

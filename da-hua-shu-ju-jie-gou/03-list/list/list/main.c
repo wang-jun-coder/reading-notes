@@ -10,6 +10,7 @@
 #include "./sqList/SqList.h"
 #include "./linkList/LinkList.h"
 #include "./staticList/StaticList.h"
+#include "./cicularList/CircularList.h"
 
 int main(int argc, const char * argv[]) {
     // insert code here...
@@ -19,7 +20,9 @@ int main(int argc, const char * argv[]) {
     
 //    linkListTest();
     
-    StaticLinkListTest();
+//    StaticLinkListTest();
+    
+    circularLinkListTest();
     
     return 0;
 }

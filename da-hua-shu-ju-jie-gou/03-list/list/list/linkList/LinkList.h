@@ -14,15 +14,6 @@
 
 #pragma mark - defines
 
-/**
- 线性表的单链表的存储结构
- 
- 结点由存放数据元素的数据域和存放后继结点地址的指针域组成
- */
-typedef struct Node {
-    ElemType data;
-    struct Node *next;
-} Node;
 
 // 定义 LinkList
 typedef struct Node *LinkList;

@@ -80,7 +80,7 @@ Status InitStaticLinkList(StaticLinkList space) {
 Status StaticLinkListInsert(StaticLinkList space, int i, ElemType e) {
     int j, k, l;
     k = MAXSIZE_FOR_STATICLINKLIST-1;
-    if (i<1 || i>StaticLinkListLength(space)+1) return ERROR;
+//    if (i<1 || i>StaticLinkListLength(space)+1) return ERROR;
     j = Malloc_SLL(space);
     if (!j) return ERROR;
 
