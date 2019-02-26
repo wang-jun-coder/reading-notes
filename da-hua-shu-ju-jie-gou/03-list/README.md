@@ -509,6 +509,72 @@ Status UnionCircularLinkList(CircularLinkList *list, CircularLinkList *anotherLi
 }
 ```
 
+## 双向链表
+**在单链表的每个节点中，再设置一个指向其前驱节点的指针域，称为双线链表（double link list）**
+
+### 双向链表的插入
+```c
+/**
+ 向双向链表第 i 个位置插入元素
+ 
+ @param L 双向链表, 必须存在
+ @param i 要插入的位置标号, 1 ≤ i ≤ ListLength(L)
+ @param e 要插入的元素
+ @return 操作结果 OK/ERROR
+ */
+Status DuLinkListInsert(DuLinkList *L, int i, ElemType e) {
+    DuLinkList p = *L;
+    int j = 1;
+    
+    while (p && j<i) {
+        p = p->next;
+        ++j;
+    }
+    // 第 i 个元素不存在
+    if (!p || j >i) return ERROR;
+    
+    // 生成一个新节点
+    DuLinkList s = (DuLinkList)malloc(sizeof(DulNode));
+
+    // 插入元素
+    s->data = e;
+    s->prior = p;
+    s->next = p->next;
+    if(p->next != NULL) p->next->prior = s;
+    p->next = s;
+    
+    return OK;
+}
+```
+### 双向链表的删除
+```c
+/**
+ 移除双向链表的第 i 个位置的元素
+ 
+ @param L 双向链表,必须存在
+ @param i 要移除元素的位置标号, 1 ≤ i ≤ ListLength(L)
+ @param e 要删除的元素返回
+ @return 操作结果 OK/ERROR
+ */
+Status DuLinkListDelete(DuLinkList *L, int i, ElemType *e) {
+    DuLinkList p = (*L)->next;
+    int j = 1;
+    while (p && j < i) {
+        p = p->next;
+        ++j;
+    }
+    // 第 i 个节点不存在
+    if (!p || j > i) return ERROR;
+    
+    *e = p->data;
+    if(p->prior) p->prior->next = p->next;
+    if(p->next) p->next->prior = p->prior;
+
+    free(p);
+    
+    return OK;
+}
+```
 
 
 

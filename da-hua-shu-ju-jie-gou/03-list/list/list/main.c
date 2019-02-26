@@ -11,6 +11,7 @@
 #include "./linkList/LinkList.h"
 #include "./staticList/StaticList.h"
 #include "./cicularList/CircularList.h"
+#include "./duList/DuList.h"
 
 int main(int argc, const char * argv[]) {
     // insert code here...
@@ -22,7 +23,9 @@ int main(int argc, const char * argv[]) {
     
 //    StaticLinkListTest();
     
-    circularLinkListTest();
+//    circularLinkListTest();
+    
+    DuLinkListTest();
     
     return 0;
 }

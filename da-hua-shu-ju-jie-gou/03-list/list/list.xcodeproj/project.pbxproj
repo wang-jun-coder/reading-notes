@@ -12,6 +12,7 @@
 		DA48D11021EE193A006A240B /* SqList.c in Sources */ = {isa = PBXBuildFile; fileRef = DA48D10F21EE193A006A240B /* SqList.c */; };
 		DA67B4AF21EF7AFA002D3947 /* LinkList.c in Sources */ = {isa = PBXBuildFile; fileRef = DA67B4AE21EF7AFA002D3947 /* LinkList.c */; };
 		DA8512712220DE23007A250C /* CircularList.c in Sources */ = {isa = PBXBuildFile; fileRef = DA8512702220DE23007A250C /* CircularList.c */; };
+		DADA334A22256A2F00C8B33A /* DuList.c in Sources */ = {isa = PBXBuildFile; fileRef = DADA334922256A2F00C8B33A /* DuList.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -38,6 +39,8 @@
 		DA67B4AE21EF7AFA002D3947 /* LinkList.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = LinkList.c; sourceTree = "<group>"; };
 		DA85126F2220DE23007A250C /* CircularList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CircularList.h; sourceTree = "<group>"; };
 		DA8512702220DE23007A250C /* CircularList.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CircularList.c; sourceTree = "<group>"; };
+		DADA334822256A2F00C8B33A /* DuList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DuList.h; sourceTree = "<group>"; };
+		DADA334922256A2F00C8B33A /* DuList.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = DuList.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +87,7 @@
 				DA67B4AC21EF7AEE002D3947 /* linkList */,
 				DA054119221AD6BC004519F5 /* staticList */,
 				DA85126E2220DE08007A250C /* cicularList */,
+				DADA3347222569F900C8B33A /* duList */,
 				DA48D10721EE11D6006A240B /* main.c */,
 			);
 			path = list;
@@ -114,6 +118,15 @@
 				DA8512702220DE23007A250C /* CircularList.c */,
 			);
 			path = cicularList;
+			sourceTree = "<group>";
+		};
+		DADA3347222569F900C8B33A /* duList */ = {
+			isa = PBXGroup;
+			children = (
+				DADA334822256A2F00C8B33A /* DuList.h */,
+				DADA334922256A2F00C8B33A /* DuList.c */,
+			);
+			path = duList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -174,6 +187,7 @@
 			files = (
 				DA48D10821EE11D6006A240B /* main.c in Sources */,
 				DA8512712220DE23007A250C /* CircularList.c in Sources */,
+				DADA334A22256A2F00C8B33A /* DuList.c in Sources */,
 				DA05411C221AD6DC004519F5 /* StaticList.c in Sources */,
 				DA67B4AF21EF7AFA002D3947 /* LinkList.c in Sources */,
 				DA48D11021EE193A006A240B /* SqList.c in Sources */,
