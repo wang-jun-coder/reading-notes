@@ -13,9 +13,9 @@
 #include "../stack/LinkStack.h"
 
 Status transferExpressionToRPN(const char *expression, char *rpn);
-Status calculatorWithRPN(const char *rpn, double *result);
+Status calculatorWithRPN(char *rpn, double *result);
 int getPriorityOfOperation(char op);
-Status convertExpression(const char *expression, char *realExp);
+Status convertExpression(char *expression, char *realExp);
 /**
  计算四则运算表达式的值
  
@@ -116,8 +116,9 @@ Status transferExpressionToRPN(const char *expression, char *rpn) {
         result[cur++] = e;
     }
     result[cur] = '\0';
-    *rpn = result;
-    printf("RPN: %s\n", result);
+//    rpn = result;
+    strcpy(rpn, result);
+    printf("RPN: %s\n", rpn);
     return OK;
 }
 
@@ -129,8 +130,80 @@ Status transferExpressionToRPN(const char *expression, char *rpn) {
  @param result 计算结果
  @return 计算状态, 是否成功
  */
-Status calculatorWithRPN(const char *rpn, double *result) {
+Status calculatorWithRPN(char *rpn, double *result) {
     *result = 0;
+    
+    LinkStack stack;
+    InitLinkStack(&stack);
+    
+    unsigned long len = strlen(rpn);
+    
+    for (int i=0; i<len; i++) {
+        char one = rpn[i];
+        if ('\0' == one) break;
+        if (' ' == one) continue;
+        
+        // 数字进栈
+        if (isdigit(one)) {
+            LinkStackPush(&stack, one);
+            continue;
+        }
+        // 运算符处理
+        if ('-' == one) {
+            // 减数
+            char subtractor;
+            LinkStackPop(&stack, &subtractor);
+            // 被减数
+            char minuend;
+            LinkStackPop(&stack, &minuend);
+            // 结果入栈
+            int res = (minuend - '0') - (subtractor - '0');
+            LinkStackPush(&stack, res+'0');
+            continue;
+        }
+        
+        if ('+' == one) {
+            // 加数
+            char addend;
+            LinkStackPop(&stack, &addend);
+            // 被加数
+            char augend;
+            LinkStackPop(&stack, &augend);
+            // 结果入栈
+            int res = (augend - '0') + (addend - '0');
+            LinkStackPush(&stack, res+'0');
+            continue;
+        }
+        
+        if ('*' == one) {
+            // 乘数
+            char multiplier;
+            LinkStackPop(&stack, &multiplier);
+            // 被乘数
+            char multiplicand;
+            LinkStackPop(&stack, &multiplicand);
+            // 结果入栈
+            int res = (multiplicand - '0') * (multiplier - '0');
+            LinkStackPush(&stack, res+'0');
+            continue;
+        }
+        
+        if ('/' == one) {
+            // 除数
+            char divisor;
+            LinkStackPop(&stack, &divisor);
+            // 被除数
+            char dividend;
+            LinkStackPop(&stack, &dividend);
+            // 结果入栈
+            int res = (dividend-'0') / (divisor-'0');
+            LinkStackPush(&stack, res+'0');
+            continue;
+        }
+    }
+    char res;
+    LinkStackPop(&stack, &res);
+    *result = res - '0';
     return OK;
 }
 
@@ -164,16 +237,18 @@ int getPriorityOfOperation(char op) {
  @param realExp 转换后的 char 数组 ['9', '+', '(', '3', '-', '1', ')', '*', '3', '+', '4', '/', '2', '\0']
  @return 转换是否成功
  */
-Status convertExpression(const char *expression, char *realExp) {
+Status convertExpression(char *expression, char *realExp) {
     char res[MAXSIZE];
     int cur = 0;
 
-    char delim = ' ';
-    char *p = strtok(&delim, expression);
-    while (p != NULL) {
-        res[cur++] = *p;
-        p = strtok(&delim, expression);
-    }
+    char delims[] = " ";
+    char *result = NULL;
+    result = strtok(expression, delims);
+//    while( result != NULL ) {
+//        printf( "result is \"%s\"\n", result );
+//        res[cur++] = result;
+//        result = strtok( NULL, delims );
+//    }
     *realExp = res;
     return OK;
 }

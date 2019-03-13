@@ -171,7 +171,7 @@ void FibonacciTest(void) {
 **把一个直接调用自己或通过一系列的调用语句间接的调用自己的函数，称为递归函数**
 **每个递归定义必须至少有一个条件，满足时递归不再进行，即不再引用自身而是返回值退出**
 
-## 栈的应用 -- 四则运算表达式求值-->
+## 栈的应用 -- 四则运算表达式求值
 ### 后缀（逆波兰）表示法定义
 **所有操作符置于操作数的后面 也称 后缀表示法**
 > 逆波兰记法中，操作符置于操作数的后面。例如表达“三加四”时，写作“3 4 +”，而不是“3 + 4”。如果有多个操作符，操作符置于第二个操作数的后面，所以常规中缀记法的“3 - 4 + 5”在逆波兰记法中写作“3 4 - 5 +”：先3减去4，再加上5。使用逆波兰记法的一个好处是不需要使用括号。例如中缀记法中“3 - 4 * 5”与”（3 - 4）* 5” 不相同，但后缀记法中前者写做“3 4 5 * -”，无歧义地表示“3 (4 5 * ) -”；后者写做“3 4 - 5 * ” --- [摘自维基百科](https://zh.wikipedia.org/wiki/%E9%80%86%E6%B3%A2%E5%85%B0%E8%A1%A8%E7%A4%BA%E6%B3%95)
@@ -179,10 +179,14 @@ void FibonacciTest(void) {
 以大化数据结构中的例子 9 + ( 3 - 1 ) * 3 + 10 / 2, 其逆波兰表示为 (9 ((3 1 -) 3 *)+) (10 2 /) + 即 **9 3 1 - 3 * + 10 2 / +**
 
 ### 中缀表达式转后缀表达式
+
+#### c 版中缀表达式转后缀表达式
 ```c
 /**
  转换中缀表达式为后缀表达式
-
+ 
+ 注意： 能力有限，我用 C 只能写出个位数的整数逆波兰表达式计算，仅供参考
+ 
  @param expression 中缀表达式 如：9+(3-1)*3+4/2
  @param rpn 得到的后缀表达式
  @return 转换状态, 是否成功
@@ -191,9 +195,6 @@ Status transferExpressionToRPN(const char *expression, char *rpn) {
     
     LinkStack stack;
     InitLinkStack(&stack);
-    
-//    char realExp[MAXSIZE];
-//    convertExpression(expression, realExp);
     
     char result[MAXSIZE];
     int cur = 0;
@@ -287,5 +288,199 @@ int getPriorityOfOperation(char op) {
         return 2; // 优先级比 */高
     }
     return -1;
+}
+```
+#### javascript 版中缀表达式转后缀表达式
+```js
+/**
+ * 获取运算符优先级
+ *
+ * @param op 运算符, 暂时支持 + - * / ( )
+ * @return {number} 运算符优先级, 如运算符不存在, 则返回-1
+ */
+function getPriorityOfOperation(op) {
+
+    const priority = {
+        '+':1,
+        '-':1,
+        '*':2,
+        '/':2,
+        '(':3,
+        ')':3
+    };
+    return priority[op] || -1;
+}
+
+/**
+ * 转换中缀表达式为后缀表达式
+ *
+ * @param expression 中缀表达式
+ * @return {string} 后缀表达式
+ */
+function transferExpressionToRPN(expression) {
+
+    // 前置数据处理
+    expression = expression.replace(/\+/g, ' + ');
+    expression = expression.replace(/-/g, ' - ');
+    expression = expression.replace(/\*/g, ' * ');
+    expression = expression.replace(/\//g, ' / ');
+    expression = expression.replace(/\(/g, ' ( ');
+    expression = expression.replace(/\)/g, ' ) ');
+    expression = expression.replace(/\s+/g, ',');
+    const array = expression.split(',');
+    console.log(array);
+
+    let rpn = '';
+    let stack = [];
+
+    array.forEach(item => {
+
+        const num = parseFloat(item);
+
+        // 数字
+        if (!isNaN(num)) {
+            rpn += ` ${num}`;
+            return;
+        }
+
+        // 空栈或者为(. 则直接入栈
+        if (stack.length === 0 || '(' === item) {
+            stack.push(item);
+            return;
+        }
+
+        // 如果是右括号, 则出栈, 直接匹配到左括号
+        if (')' === item) {
+
+            let top = stack[stack.length-1];
+            // 没遇到匹配的左括号, 循环
+            while ('(' !== top || !stack.length) {
+                top = stack.pop();
+                if (top !== '(') {
+                    rpn += ` ${top}`;
+                }
+            }
+            return;
+        }
+
+        // 如果顶部是 ( 则直接入栈
+        let top = stack[stack.length-1];
+        if('(' === top) {
+            stack.push(item);
+            return;
+        }
+
+        // 普通则对比当前操作符和栈顶操作符优先级, 当前高则入栈, 否则出栈
+        let pTop = getPriorityOfOperation(top);
+        const pCur = getPriorityOfOperation(item);
+        if (pCur > pTop) {
+            stack.push(item);
+            return;
+        }
+
+        // 当前操作符优先级低, 出栈, 然后将当前操作符入栈
+        while (pTop >= pCur  && stack.length) {
+            top = stack.pop();
+            rpn += ` ${top}`;
+            pTop = getPriorityOfOperation(top);
+        }
+        stack.push(item);
+    });
+
+    // 将栈中符号全部取出
+    while (stack.length) {
+        rpn += ` ${stack.pop()}`;
+    }
+
+    rpn.substr(1,rpn.length-1);
+    return '';
+}
+
+```
+### 计算后缀表达式的值
+```c
+/**
+ 计算后缀表达式的值
+
+ 注意： 能力有限，我用 C 只能写出个位数的整数四则运算，仅供参考
+ @param rpn 后缀表达式
+ @param result 计算结果
+ @return 计算状态, 是否成功
+ */
+Status calculatorWithRPN(char *rpn, double *result) {
+    *result = 0;
+    
+    LinkStack stack;
+    InitLinkStack(&stack);
+    
+    unsigned long len = strlen(rpn);
+    
+    for (int i=0; i<len; i++) {
+        char one = rpn[i];
+        if ('\0' == one) break;
+        if (' ' == one) continue;
+        
+        // 数字进栈
+        if (isdigit(one)) {
+            LinkStackPush(&stack, one);
+            continue;
+        }
+        // 运算符处理
+        if ('-' == one) {
+            // 减数
+            char subtractor;
+            LinkStackPop(&stack, &subtractor);
+            // 被减数
+            char minuend;
+            LinkStackPop(&stack, &minuend);
+            // 结果入栈
+            int res = (minuend - '0') - (subtractor - '0');
+            LinkStackPush(&stack, res+'0');
+            continue;
+        }
+        
+        if ('+' == one) {
+            // 加数
+            char addend;
+            LinkStackPop(&stack, &addend);
+            // 被加数
+            char augend;
+            LinkStackPop(&stack, &augend);
+            // 结果入栈
+            int res = (augend - '0') + (addend - '0');
+            LinkStackPush(&stack, res+'0');
+            continue;
+        }
+        
+        if ('*' == one) {
+            // 乘数
+            char multiplier;
+            LinkStackPop(&stack, &multiplier);
+            // 被乘数
+            char multiplicand;
+            LinkStackPop(&stack, &multiplicand);
+            // 结果入栈
+            int res = (multiplicand - '0') * (multiplier - '0');
+            LinkStackPush(&stack, res+'0');
+            continue;
+        }
+        
+        if ('/' == one) {
+            // 除数
+            char divisor;
+            LinkStackPop(&stack, &divisor);
+            // 被除数
+            char dividend;
+            LinkStackPop(&stack, &dividend);
+            // 结果入栈
+            int res = (dividend-'0') / (divisor-'0');
+            LinkStackPush(&stack, res+'0');
+            continue;
+        }
+    }
+    char res;
+    LinkStackPop(&stack, &res);
+    *result = res - '0';
+    return OK;
 }
 ```
