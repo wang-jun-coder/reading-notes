@@ -107,8 +107,7 @@ function transferExpressionToRPN(expression) {
         rpn += ` ${stack.pop()}`;
     }
 
-    rpn.substr(1,rpn.length-1);
-    return '';
+    return rpn.substr(1,rpn.length-1);
 }
 
 /**
@@ -118,7 +117,36 @@ function transferExpressionToRPN(expression) {
  * @return {number} 计算结果
  */
 function calculatorWithRPN(rpn) {
-    return 12;
+    const stack = [];
+    const array = rpn.split(' ');
+
+    array.forEach(item => {
+        const num = Number(item);
+
+        // 数字
+        if (!isNaN(num)) {
+            stack.push(num);
+            return;
+        }
+
+        const numB = stack.pop();
+        const numA = stack.pop();
+        if ('+' === item) {
+            stack.push(numA+numB);
+        }
+        if ('-' === item) {
+            stack.push(numA-numB);
+        }
+        if ('*' === item) {
+            stack.push(numA*numB);
+        }
+        if ('/' === item) {
+            stack.push(numA/numB);
+        }
+    });
+
+
+    return stack.pop();
 }
 
 
@@ -126,8 +154,9 @@ function calculatorWithRPN(rpn) {
 * 测试代码
 * */
 function test() {
-    const exp = '9+(3-1)*3+10/2';
-    calculator(exp);
+    const exp = '9.5+(5-1)*3+10/2';
+    const  res = calculator(exp);
+    console.log(`${exp} = ${res}`);
 }
 test();
 

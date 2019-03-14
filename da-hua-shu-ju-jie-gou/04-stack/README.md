@@ -398,6 +398,7 @@ function transferExpressionToRPN(expression) {
 
 ```
 ### 计算后缀表达式的值
+#### C 语言计算后缀表达式
 ```c
 /**
  计算后缀表达式的值
@@ -482,5 +483,43 @@ Status calculatorWithRPN(char *rpn, double *result) {
     LinkStackPop(&stack, &res);
     *result = res - '0';
     return OK;
+}
+```
+#### JavaScript 版计算后缀表达式
+```js
+/**
+ * 计算后缀表达式的值
+ *
+ * @param rpn 后缀表达式
+ * @return {number} 计算结果
+ */
+function calculatorWithRPN(rpn) {
+    const stack = [];
+    const array = rpn.split(' ');
+
+    array.forEach(item => {
+        const num = Number(item);
+        // 数字
+        if (!isNaN(num)) {
+            stack.push(num);
+            return;
+        }
+
+        const numB = stack.pop();
+        const numA = stack.pop();
+        if ('+' === item) {
+            stack.push(numA+numB);
+        }
+        if ('-' === item) {
+            stack.push(numA-numB);
+        }
+        if ('*' === item) {
+            stack.push(numA*numB);
+        }
+        if ('/' === item) {
+            stack.push(numA/numB);
+        }
+    });
+    return stack.pop();
 }
 ```
