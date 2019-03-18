@@ -21,6 +21,10 @@ typedef struct {
 #pragma mark - functions
 
 Status InitSqQueue(SqQueue *Q);
+Status ClearSqQueue(SqQueue *Q);
+Status DestorySqQueue(SqQueue *Q);
+Status SqQueueEmpty(SqQueue Q);
+Status GetSqQueueHead(SqQueue *Q, QElemType *e);
 int SqQueueLength(SqQueue Q);
 Status EnSqQueue(SqQueue *Q, QElemType e);
 Status DeSqQueue(SqQueue *Q, QElemType *e);

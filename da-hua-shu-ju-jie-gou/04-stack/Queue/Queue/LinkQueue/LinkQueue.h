@@ -25,7 +25,11 @@ typedef struct {
 #pragma mark - functions
 
 Status InitLinkQueue(LinkQueue *Q);
-int LinkQueueLength(LinkQueue Q);
+Status ClearLinkQueue(LinkQueue *Q);
+Status DestoryLinkQueue(LinkQueue *Q);
+Status LinkQueueEmpty(LinkQueue *Q);
+Status GetLinkQueueHead(LinkQueue *Q, QElemType *e);
+int LinkQueueLength(LinkQueue *Q);
 Status EnLinkQueue(LinkQueue *Q, QElemType e);
 Status DeLinkQueue(LinkQueue *Q, QElemType *e);
 

@@ -9,7 +9,7 @@
 #include "SqQueue.h"
 #pragma mark - test
 void SqQueueTest(void) {
-    printf("=========== SqQueueTest ==========\n");
+    printf("\n=========== SqQueueTest ==========\n");
     Status s;
     int len;
     QElemType e;
@@ -36,9 +36,21 @@ void SqQueueTest(void) {
     len = SqQueueLength(queue);
     printf("SqQueueLength: %d\n", len);
     
+    e = 77;
+    s = EnSqQueue(&queue, e);
+    printf("EnSqQueue: %d status: %d\n", e, s);
+    
+    s = GetSqQueueHead(&queue, &e);
+    printf("GetSqQueueHead: %d status: %d\n", e, s);
     
     s = DeSqQueue(&queue, &e);
     printf("DeSqQueue: %d status: %d\n", e, s);
+    
+    s = GetSqQueueHead(&queue, &e);
+    printf("GetSqQueueHead: %d status: %d\n", e, s);
+    
+    s = ClearSqQueue(&queue);
+    printf("ClearSqQueue: %d\n", s);
     
     len = SqQueueLength(queue);
     printf("SqQueueLength: %d\n", len);
@@ -51,6 +63,28 @@ Status InitSqQueue(SqQueue *Q) {
     Q->rear = 0;
     return OK;
 }
+Status ClearSqQueue(SqQueue *Q) {
+    Q->front = 0;
+    Q->rear = 0;
+    return OK;
+}
+Status DestorySqQueue(SqQueue *Q) {
+    Q->front = 0;
+    Q->rear = 0;
+    return OK;
+}
+Status SqQueueEmpty(SqQueue Q) {
+    return SqQueueLength(Q) == 0 ? TRUE : FALSE;
+}
+Status GetSqQueueHead(SqQueue *Q, QElemType *e) {
+    if (Q->front == Q->rear) {
+        return ERROR;
+    }
+
+    *e = Q->data[Q->front];
+    return OK;
+}
+
 int SqQueueLength(SqQueue Q) {
     return (Q.rear - Q.front + MAXSIZE) % MAXSIZE;
 }

@@ -8,12 +8,15 @@
 
 #include <stdio.h>
 #include "SqQueue/SqQueue.h"
+#include "LinkQueue/LinkQueue.h"
 
 int main(int argc, const char * argv[]) {
     // insert code here...
 //    printf("Hello, World!\n");
     
     SqQueueTest();
+    
+    LinkQueueTest();
     
     return 0;
 }

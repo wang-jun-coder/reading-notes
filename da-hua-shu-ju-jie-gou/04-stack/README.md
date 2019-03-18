@@ -590,6 +590,54 @@ Status DeSqQueue(SqQueue *Q, QElemType *e) {
 
 ```
 
+## 循环队列的链式存储结构及实现
+### 链队列结构
+```c
+typedef struct QNode {
+    QElemType data;
+    struct QNode *next;
+}QNode, *QueuePtr;
+
+
+typedef struct {
+    QueuePtr front, rear;
+} LinkQueue;
+```
+### 队列的链式存储结构 -- 入队操作
+```c
+Status EnLinkQueue(LinkQueue *Q, QElemType e) {
+    QueuePtr s = (QueuePtr)malloc(sizeof(QNode));
+    if (!s) return ERROR;
+    
+    s->data = e;
+    s->next = NULL;
+    // 插入队尾, 并更新队尾指针
+    Q->rear->next = s;
+    Q->rear = s;
+    
+    return OK;
+}
+```
+### 队列的链式存储结构 -- 出队操作
+```c
+Status DeLinkQueue(LinkQueue *Q, QElemType *e) {
+    QueuePtr p;
+    if (Q->front == Q->rear) {
+        return ERROR;
+    }
+    p = Q->front->next;
+    *e = p->data;
+    Q->front->next = p->next;
+    
+    if (Q->rear == p) {
+        Q->rear = Q->front;
+    }
+    free(p);
+    return OK;
+    
+}
+```
+
 
 
 
