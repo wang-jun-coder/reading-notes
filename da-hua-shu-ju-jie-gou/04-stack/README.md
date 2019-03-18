@@ -523,3 +523,77 @@ function calculatorWithRPN(rpn) {
     return stack.pop();
 }
 ```
+
+## 队列的定义
+**队列(queue)是只允许在一端进行插入操作，而在另一端进行删除操作的线性表**  
+队列是一种先进先出(First In First Out)的线性表，简称 FIFO，允许插入的一端称为队尾，允许删除的一端称为队头。  
+
+## 队列的抽象数据类型
+```c
+ADT 队列(Queue)
+Data 
+	同线性表。元素具有相同的类型，相邻元素具有前驱和后继关系
+Operation
+	InitQueue(*Q); 初始化操作，建立一个空队列 Q。
+	DestroyQueue(*Q); 若队列 Q 存在，则销毁它。
+	ClearQueue(*Q); 将队列 Q 清空。
+	QueueEmpty(*Q); 若队列为空，返回 true，否则返回 false。
+	GetHead(Q, *e); 若队列 Q 存在且非空，用 e 返回队列 Q 的队头元素。
+	EnQueue(*Q, e); 若队列 Q 存在，插入新元素 e 到队列的队尾元素。
+	DeQueue(*Q, e); 删除队列的队头元素，并用 e 返回其值。
+	QueueLength(Q); 返回队列 Q 的元素个数
+endADT	
+```
+
+## 循环队列
+### 队列顺序存储的不足
+* 顺序存储时，出栈所有元素均需要移动
+* 新增 front、rear 指针来分别指示队头和队尾，又存在假溢出现象
+
+### 循环队列定义
+为解决假溢出的情况，将顺序存储结构编程头尾相接的循环，我们把
+
+### 循环队列的实现
+```c
+typedef struct {
+    QElemType data[MAXSIZE];
+    int front;
+    int rear;
+} SqQueue;
+
+Status InitSqQueue(SqQueue *Q) {
+    Q->front = 0;
+    Q->rear = 0;
+    return OK;
+}
+int SqQueueLength(SqQueue Q) {
+    return (Q.rear - Q.front + MAXSIZE) % MAXSIZE;
+}
+Status EnSqQueue(SqQueue *Q, QElemType e) {
+    // 队列已满
+    if ((Q->rear+1) % MAXSIZE == Q->front) {
+        return ERROR;
+    }
+    Q->data[Q->rear] = e;
+    Q->rear = (Q->rear+1)%MAXSIZE;
+    return OK;
+}
+Status DeSqQueue(SqQueue *Q, QElemType *e) {
+    // 队列空
+    if (Q->front == Q->rear) {
+        return ERROR;
+    }
+    *e = Q->data[Q->front];
+    Q->front = (Q->front+1)%MAXSIZE;
+    return OK;
+}
+
+```
+
+
+
+
+
+
+
+
