@@ -36,14 +36,23 @@
 #define TRUE 1
 #define FALSE 0
 typedef int  Status;            // Status 是函数的类型,其值是函数结果状态码,如 OK 等
+#define MAXSIZE 100
 
-typedef char * String;
+typedef char String[MAXSIZE+1]; // 串的顺序存储结构,第0位用于存储串的长度
 
 #pragma mark - functions
-int Index(String S, String T, int pos);
-Status SubString(String Sub, String S, int pos, int len);
+Status StrAssign(String S, char *chars);
+Status StrCopy(String T, String S);
+Status ClearString(String S);
+Status StringEmpty(String S);
 int StrLength(String S);
 int StrCompare(String S, String T);
+Status Concat(String T, String S1, String S2);
+Status SubString(String Sub, String S, int pos, int len);
+int Index(String S, String T, int pos);
+Status Replace(String S, String T, String V);
+Status StrInsert(String S, int pos, String T);
+Status StrDelete(String S, int pos, int len);
 
 #pragma mark - test
 
