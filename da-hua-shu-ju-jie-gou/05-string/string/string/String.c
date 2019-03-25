@@ -38,16 +38,14 @@ void StringTest(void) {
     int index = Index(s3, s2, 1);
     printf("SubString(%s, %s, %d): index: %d\n", s3, s2, 1, index);
     
+    status = StrDelete(s3, 8, 5);
+    printf("StrDelete(%s, 8, 5)\n", s3);
     
-//    String s1 = c1;
-//    String s2 = c2;
-//
-//    printf("s1: %s\ns2: %s\n", s1, s2);
-//
-//    int pos = Index(s1, s2, 0);
-//    printf("Index: s1: %s, s2: %s, pos: %d\n",s1, s2, pos);
-//
+    status = StrInsert(s3, 8, s2);
+    printf("StrInsert(%s, 8, %s)\n", s3, s2);
     
+    status = Replace(s3, s2, s1);
+    printf("Replace(%s, %s, %s)\n", s3, s2, s1);
 }
 
 
@@ -151,11 +149,37 @@ int Index(String S, String T, int pos) {
     return i;
 }
 Status Replace(String S, String T, String V) {
+    int pos = Index(S, T, 1);
+    int len = StrLength(T);
+    if (pos) {
+        StrDelete(S, pos, len);
+    }
+    StrInsert(S, pos, V);
     return OK;
 }
 Status StrInsert(String S, int pos, String T) {
+    int len = StrLength(T);
+    int strLen = StrLength(S);
+    
+    for(int i=len; i>=0; i--) {
+        int index = pos+i;
+        if (index>strLen) {
+            S[index] = T[i];
+            continue;
+        }
+        S[index+len] = S[index];
+        S[index] = T[i];
+    }
+    
+    S[0] = strLen+len;
     return OK;
 }
 Status StrDelete(String S, int pos, int len) {
+    int strLen = StrLength(S);
+    
+    for(int i=0; i<len; i++) {
+        S[pos+i] = S[pos+len+i];
+    }
+    S[0] = strLen - len;
     return OK;
 }
