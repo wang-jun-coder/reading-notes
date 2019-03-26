@@ -107,6 +107,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = DAEA9CF92241143800981B49;
 			productRefGroup = DAEA9D032241143800981B49 /* Products */;

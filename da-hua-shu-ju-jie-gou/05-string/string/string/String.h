@@ -54,6 +54,32 @@ Status Replace(String S, String T, String V);
 Status StrInsert(String S, int pos, String T);
 Status StrDelete(String S, int pos, int len);
 
+
+
+/**
+ 朴素的模式匹配算法
+ 
+ @param S 原字符串
+ @param T 要查找的字符串
+ @param pos 从原字符串的指定位置开始查找
+ @return 要查找的字符串在原串中的位置, 若不存在则返回0
+ */
+int SimplicityIndex(String S, String T, int pos);
+
+/**
+ 克努特-莫斯里斯-普拉特算法(KMP 算法)
+ 
+ @param S 原字符串
+ @param T 要查找的字符串
+ @param pos 开始查找的位置
+ @return 查到的开始位置
+ */
+int Index_KMP(String S, String T, int pos);
+
+#pragma mark private
+void get_next(String T, int *next);
+void get_nextval(String T, int *nextval);
+
 #pragma mark - test
 
 void StringTest(void);

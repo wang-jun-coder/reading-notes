@@ -185,3 +185,75 @@ Status StrDelete(String S, int pos, int len) {
     return OK;
 }
 ```
+## KMP 模式匹配算法
+### KMP 模式匹配算法实现
+```c
+void get_next(String T, int *next) {
+    int i, j;
+    i = 1;
+    j = 0;
+    next[i]=0; // 第一位为0
+    int len = StrLength(T);
+    while (i<len) {
+        if (j==0 || T[i] == T[j]) { // T[i] 表示后缀的单个字符, T[j] 表示前缀的单个字符
+            ++i;
+            ++j;
+            next[i] = j;
+        } else {
+            j = next[j]; // 若字符不同, 则 j 值回溯
+        }
+    }
+}
+
+int Index_KMP(String S, String T, int pos) {
+    int i=pos;
+    int j = 1;
+    
+    int next[255];
+    get_next(T, next);
+    int lenS = StrLength(S);
+    int lenT = StrLength(T);
+    
+    while (i<lenS && j <= lenT) {
+        if (j == 0 || S[i] == T[j]) {
+            ++i;
+            ++j;
+        } else {
+            j = next[j];
+        }
+    }
+    
+    if (j > lenT) {
+        return i - T[0];
+    }
+    return 0;
+};
+
+```
+
+### KMP 模式匹配算法的改进
+
+```c
+void get_nextval(String T, int *nextval) {
+    int i, j;
+    i = 1;
+    j = 0;
+    nextval[i] = 0;
+    int len = StrLength(T);
+    while (i < len) {
+        if (j == 0 || T[i] == T[j]) {
+            ++i;
+            ++j;
+            if (T[i] != T[j]) {
+                nextval[i] = j;
+            } else {
+                nextval[i] = nextval[j];
+            }
+        } else {
+            j = nextval[j];
+        }
+    }
+    
+}
+
+```

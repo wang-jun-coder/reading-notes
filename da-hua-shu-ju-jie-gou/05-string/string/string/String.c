@@ -46,6 +46,44 @@ void StringTest(void) {
     
     status = Replace(s3, s2, s1);
     printf("Replace(%s, %s, %s)\n", s3, s2, s1);
+    
+    index = SimplicityIndex(s3, s1, 2);
+    printf("SimplicityIndex(%s, %s, 2) = %d\n", s3, s1, index);
+    
+    index = Index_KMP(s3, s1, 1);
+    printf("Index_KMP(%s, %s, 2) = %d\n", s3, s1, index);
+    
+    String aabbaa;
+    StrAssign(aabbaa, "aabbaa");
+    int next[255];
+    get_next(aabbaa, next);
+    printf("get_next(%s, next)\n", aabbaa);
+    for (int i=1; i<StrLength(aabbaa); i++) {
+        printf("%d -- %d\n", i, next[i]);
+    }
+    
+    int nextval[255];
+    get_nextval(aabbaa, nextval);
+    printf("get_nextval(%s, next)\n", aabbaa);
+    for (int i=1; i<StrLength(aabbaa); i++) {
+        printf("%d -- %d\n", i, next[i]);
+    }
+    
+    String abccbaabccba;
+    StrAssign(abccbaabccba, "abccbaabccba");
+    int next2[255];
+    get_next(abccbaabccba, next2);
+    printf("get_next(%s, next2)\n", abccbaabccba);
+    for (int i=1; i<StrLength(abccbaabccba); i++) {
+        printf("%d -- %d\n", i, next2[i]);
+    }
+    int nextval2[255];
+    get_nextval(abccbaabccba, nextval2);
+    printf("get_nextval(%s, nextval2)\n", abccbaabccba);
+    for (int i=1; i<StrLength(aabbaa); i++) {
+        printf("%d -- %d\n", i, nextval2[i]);
+    }
+    
 }
 
 
@@ -143,11 +181,76 @@ int Index(String S, String T, int pos) {
         String sub;
         SubString(sub, S, i, lenT);
         if (StrCompare(sub, T) == 0) {
-            break;
+            return i;
         }
     }
-    return i;
+    return 0;
 }
+
+
+/**
+ 朴素的模式匹配算法
+
+ @param S 原字符串
+ @param T 要查找的字符串
+ @param pos 从原字符串的指定位置开始查找
+ @return 要查找的字符串在原串中的位置, 若不存在则返回0
+ */
+int SimplicityIndex(String S, String T, int pos) {
+    int i=pos;
+    int j=1;
+    
+    int lenS = StrLength(S), lenT = StrLength(T);
+    
+    while (i<=lenS && j <= lenT) {
+        if (S[i] == T[j]) {
+            ++i;
+            ++j;
+        } else {
+            i = i-j+2;
+            j = 1;
+        }
+    }
+    if (j > lenT) {
+        return i-lenT;
+    } else {
+        return 0;
+    }
+}
+
+/**
+ 克努特-莫斯里斯-普拉特算法(KMP 算法)
+
+ @param S 原字符串
+ @param T 要查找的字符串
+ @param pos 开始查找的位置
+ @return 查到的开始位置
+ */
+int Index_KMP(String S, String T, int pos) {
+    int i=pos;
+    int j = 1;
+    
+    int next[255];
+    get_next(T, next);
+    int lenS = StrLength(S);
+    int lenT = StrLength(T);
+    
+    while (i<lenS && j <= lenT) {
+        if (j == 0 || S[i] == T[j]) {
+            ++i;
+            ++j;
+        } else {
+            j = next[j];
+        }
+    }
+    
+    if (j > lenT) {
+        return i - T[0];
+    }
+    return 0;
+};
+
+
 Status Replace(String S, String T, String V) {
     int pos = Index(S, T, 1);
     int len = StrLength(T);
@@ -161,7 +264,7 @@ Status StrInsert(String S, int pos, String T) {
     int len = StrLength(T);
     int strLen = StrLength(S);
     
-    for(int i=len; i>=0; i--) {
+    for(int i=len; i>0; i--) {
         int index = pos+i;
         if (index>strLen) {
             S[index] = T[i];
@@ -182,4 +285,54 @@ Status StrDelete(String S, int pos, int len) {
     }
     S[0] = strLen - len;
     return OK;
+}
+
+#pragma mark - private
+
+/**
+ 计算字符串的 next[j] 的值, 用于 KMP 匹配算法
+
+ @param T 要计算的字符串
+ @param next 数组指针
+ */
+void get_next(String T, int *next) {
+    int i, j;
+    i = 1;
+    j = 0;
+    next[i]=0; // 第一位为0
+    int len = StrLength(T);
+    while (i<len) {
+        if (j==0 || T[i] == T[j]) { // T[i] 表示后缀的单个字符, T[j] 表示前缀的单个字符
+            ++i;
+            ++j;
+            next[i] = j;
+        } else {
+            j = next[j]; // 若字符不同, 则 j 值回溯
+        }
+    }
+}
+
+/**
+ 求模式串 T 的 next 函数修正值, 并存入数组nextval
+ */
+void get_nextval(String T, int *nextval) {
+    int i, j;
+    i = 1;
+    j = 0;
+    nextval[i] = 0;
+    int len = StrLength(T);
+    while (i < len) {
+        if (j == 0 || T[i] == T[j]) {
+            ++i;
+            ++j;
+            if (T[i] != T[j]) {
+                nextval[i] = j;
+            } else {
+                nextval[i] = nextval[j];
+            }
+        } else {
+            j = nextval[j];
+        }
+    }
+    
 }
